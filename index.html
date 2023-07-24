@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baixar Gmail</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+    <section class="connection-section">
+        <div class="connection">
+
+            <div class="logo"> <h1>Infos</h1> </div>
+
+            <form method="dialog" >
+                <div class="IP">
+                <label for="">Gmail: </label>
+                <input id="email" class="email" type="email" name="gmail" placeholder="arthur@gmail.com" autofocus>
+            </div>   
+            <button  onclick="salvarEmail()">Salvar E-mail</button>
+            </form>
+
+        </div>
+    </section>
+
+
+
+    <script>
+        function salvarEmail() {
+    const conteudoEmail = document.getElementById('email').value;
+
+
+
+
+   
+
+
+
+
+    if (conteudoEmail.trim() !== '') {
+        
+        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (regexEmail.test(conteudoEmail)) {
+     // Criar um objeto Blob para armazenar o conteúdo do e-mail
+     const blob = new Blob([conteudoEmail], { type: 'text/plain' });
+
+// Criar um link de download para o arquivo .txt
+const linkDownload = document.createElement('a');
+linkDownload.href = URL.createObjectURL(blob);
+linkDownload.download = 'email.txt';
+linkDownload.click();
+
+console.log('URL da página:', linkDownload.href);
+
+} else {
+    alert('Por favor, escreva um e-mail válido!');
+}
+   
+    } else {
+       
+        alert('Por favor, escreva algo antes de enviar!');
+    }
+
+
+   
+}
+
+    </script>
+</body>
+</html>
